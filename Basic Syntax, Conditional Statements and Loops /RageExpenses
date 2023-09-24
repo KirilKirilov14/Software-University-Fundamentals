@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class RageExpenses {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int lostGamesCount;
+
+        double mousePrice = 0;
+        double headsetPrice = 0;
+        double keyboardPrice = 0;
+        double displayPrice = 0;
+
+        int headsetTrashCount = 0;
+        int mouseTrashCount = 0;
+        int keyboardTrashCount = 0;
+        int displayTrashCount = 0;
+        int trashCount = 0;
+        double sum = 0;
+
+        double headsetExpense = 0;
+        double mouseExpense = 0;
+        double keyboardExpense = 0;
+        double displayExpense = 0;
+
+        /*
+         * 7 2 3 4 5*/
+        lostGamesCount = input.nextInt();
+        headsetPrice = input.nextDouble();
+        mousePrice = input.nextDouble();
+        keyboardPrice = input.nextDouble();
+        displayPrice = input.nextDouble();
+        boolean isTrue = false;
+
+        for (int i = 1; i <= lostGamesCount; i++) {
+
+            trashCount++;
+            if (trashCount % 2 == 0) {
+                headsetTrashCount++;
+                System.out.println("headsetTrashCount " + headsetTrashCount);
+            }
+            if (trashCount % 3 == 0) {
+                mouseTrashCount++;
+                System.out.println("mouseTrashCount " + mouseTrashCount);
+            }
+
+            if (trashCount % 6 == 0 && trashCount != 0) {
+                isTrue=false;
+                keyboardTrashCount++;
+                System.out.println("keyboardTrashCount " + keyboardTrashCount);
+            }
+            if (keyboardTrashCount % 2 == 0 && keyboardTrashCount != 0 && isTrue == false) {
+                isTrue = true;
+                displayTrashCount++;
+                System.out.println("displayTrashCount " + displayTrashCount);
+            }
+
+
+        }
+
+        headsetExpense = headsetTrashCount * headsetPrice;
+        mouseExpense = mouseTrashCount * mousePrice;
+        keyboardExpense = keyboardTrashCount * keyboardPrice;
+        displayExpense = displayTrashCount * displayPrice;
+
+        sum = headsetExpense + mouseExpense + keyboardExpense + displayExpense;
+        System.out.println("Rage expenses: " + sum + " lv.");
+    }
+}
