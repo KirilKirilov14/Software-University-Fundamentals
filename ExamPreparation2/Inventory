@@ -32,8 +32,6 @@ public class Inventory {
                     break;
 
                 case "Combine Items":
-                    //String newProduct = commandsArr[2];
-                    String[] arr = item.split(":");
                     String oldItem = item.split(":")[0];
                     String newItem= item.split(":")[1];
                     if (itemsList.contains(oldItem)) {
