@@ -1,0 +1,49 @@
+package ExamPreparation2;
+
+import java.util.Scanner;
+
+public class GuineaPig {
+    public static void main(String[] args) {
+        double foodQuantity;
+        double hayQuantity;
+        double coverQuantity;
+        double guineaWeight;
+
+
+        Scanner sc = new Scanner(System.in);
+
+        foodQuantity = Double.parseDouble(sc.nextLine());
+        double foodQuantityInMg = foodQuantity * 1000;
+
+        hayQuantity = Double.parseDouble(sc.nextLine());
+        double hayQuantityInMg = hayQuantity * 1000;
+
+        coverQuantity = Double.parseDouble(sc.nextLine());
+        double coverQuantityInMg = coverQuantity * 1000;
+
+        guineaWeight = Double.parseDouble(sc.nextLine());
+        double guineaWeightInMg = guineaWeight * 1000;
+
+
+        for (int i = 1; i <= 30; i++) {
+            foodQuantityInMg -= 300;
+            if (i % 2 == 0) {
+                double neededHay = foodQuantityInMg * 0.05;
+                hayQuantityInMg -= neededHay;
+            }
+            if (i % 3 == 0) {
+                double coverNeeded = guineaWeightInMg / 3;
+                coverQuantityInMg -= coverNeeded;
+            }
+
+            if (foodQuantityInMg <= 0 || hayQuantityInMg <= 0 || coverQuantityInMg <= 0) {
+                System.out.println("Merry must go to the pet store!");
+                return;
+            }
+
+        }
+        System.out.printf("Everything is fine! Puppy is happy! Food: %.2f, Hay: %.2f, Cover: %.2f.",
+                foodQuantityInMg / 1000, hayQuantityInMg / 1000, coverQuantityInMg / 1000);
+
+    }
+}
