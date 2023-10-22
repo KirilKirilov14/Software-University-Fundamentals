@@ -1,0 +1,33 @@
+package Exam;
+import java.util.Scanner;
+
+class BurgerBus {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int numberOfCities = Integer.parseInt(sc.nextLine());
+
+        int counter = 0;
+        double allIncome=0;
+
+        for (int i = 0; i < numberOfCities; i++) {
+            counter++;
+            double totalIncome = 0;
+            String cityName = sc.nextLine();
+            double ownerIncomes = Double.parseDouble(sc.nextLine());
+            double ownerExpenses = Double.parseDouble(sc.nextLine());
+
+            if (counter % 3 == 0 && counter % 5 != 0) {
+                ownerExpenses += ownerExpenses / 2;
+            }
+            if (counter % 5 == 0) {
+                ownerIncomes -= ownerIncomes * 0.1;
+            }
+            totalIncome = ownerIncomes - ownerExpenses;
+            allIncome += totalIncome;
+
+            System.out.printf("In %s Burger Bus earned %.2f leva.%n", cityName, totalIncome);
+        }
+
+        System.out.printf("Burger Bus total profit: %.2f leva. %n", allIncome);
+    }
+}
